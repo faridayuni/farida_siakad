@@ -703,6 +703,38 @@ class StaffController extends CI_Controller
 		}
 	}
 
+	public function edit_pengumuman($id)
+	{
+		$data['sess'] = $this->session->userdata('isStaff');
+		$data['pengumuman'] = $this->M_Staff->edit_pengumuman($id);
+		$data['no'] = 1;
+		$this->load->view('admin/template/admin_header');
+		$this->load->view('admin/template/admin_sidebar', $data);
+		$this->load->view('admin/edit_pengumuman', $data);
+		$this->load->view('admin/template/admin_footer');
+	}
+
+	public function update_pengumuman()
+	{
+		$id = $this->input->post('id');
+		$data = [
+			'judul' => $this->input->post('judul'),
+			'deskripsi' => $this->input->post('deskripsi'),
+			'tujuan' => $this->input->post('tujuan'),
+			'tanggal' => $this->input->post('tanggal'),
+		];
+
+		$query = $this->M_Staff->update_pengumuman($id, $data);
+		if ($query) {
+			$this->session->set_flashdata('success', 'Edit data berhasil');
+			redirect('StaffController/pengumuman');
+		} else {
+			$this->session->set_flashdata('success', 'Edit data Failed');
+			redirect('StaffController/pengumuman');
+		}
+	}
+
+
 	public function logout()
 	{
 		$this->session->unset_userdata('isStaff');

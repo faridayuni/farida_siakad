@@ -45,20 +45,8 @@ class MyModel extends CI_Model
 
 	
 
-	public function get_pengumuman_id($id)
-	{
-		//return $this->db->get_where('pengumuman',['id_pengumuman',$id])->row_array();
-		$this->db->select('*');
-		$this->db->from('pengumuman');
-		$this->db->where('id_pengumuman', $id);
-		return $this->db->get()->row_array();
-	}
 
-	public function edit_pengumuman($id, $data)
-	{
-		$this->db->where('id_pengumuman', $id);
-		return $this->db->update('pengumuman', $data);
-	}
+	
 
 	public function delete_pengumuman($id)
 	{

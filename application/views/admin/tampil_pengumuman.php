@@ -57,10 +57,10 @@
                 </div>
                 <div class="modal-body">
                     <form action="<?php echo base_url('StaffController/tambah_pengumuman') ?>" method="post">
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>Masukan ID Pengumuman</label>
                             <input type="text" name="id" class="form-control" required="">
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label>Masukan Judul Pengumuman</label>
                             <input type="text" name="judul" class="form-control" required="">

@@ -176,7 +176,22 @@ class M_Staff extends CI_Model
     }
 
     public function post_pengumuman($data)
-	{
-		return $this->db->insert('t_pengumuman', $data);
-	}
+    {
+        return $this->db->insert('t_pengumuman', $data);
+    }
+
+
+    public function edit_pengumuman($id)
+    {
+        $this->db->select('*');
+        $this->db->from('t_pengumuman');
+        $this->db->where('id_pengumuman', $id);
+        return $this->db->get()->row_array();
+    }
+
+    public function update_pengumuman($id, $data)
+    {
+        $this->db->where('id_pengumuman', $id);
+        return $this->db->update('t_pengumuman', $data);
+    }
 }
