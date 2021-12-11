@@ -23,7 +23,15 @@ class StaffController extends CI_Controller
 
 		$data['sess'] = $this->session->userdata('isStaff');
 		$id = $data['sess'][0]['id'];
-		$data['admin'] = $this->M_Staff->get_staff($id);
+		// $data['admin'] = $this->M_Staff->get_staff($id);
+		// $data['jumlah'] = $this->db->from('t_mahasiswa')->get()->num_rows();
+		// $data['jumlah_dosen'] = $this->db->from('t_dosen')->get()->num_rows();
+		$data = array(
+			'sess' => $this->session->userdata('isStaff'),
+			'admin' => $this->M_Staff->get_staff($id),
+			'jumlah' => $this->db->from('t_mahasiswa')->get()->num_rows(),
+			'jumlah_dosen' => $this->db->from('t_dosen')->get()->num_rows()
+		);
 		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/dasboard', $data);
@@ -37,7 +45,8 @@ class StaffController extends CI_Controller
 		$data['siswa'] = $this->M_Mahasiswa->get_siswa();
 		$data['jurusan'] = $this->M_Staff->get_jurusan();
 		$data['no'] = 1;
-		$jumlah = count($data['siswa']);
+
+		// $jumlah = count($data['siswa']);
 		//pagination
 		// $config['base_url'] = 'http://localhost/siakad/StaffController/cari_siswa/';
 		// $config['total_rows'] = $jumlah;
@@ -733,6 +742,86 @@ class StaffController extends CI_Controller
 			redirect('StaffController/pengumuman');
 		}
 	}
+
+	public function delete_pengumuman($id)
+	{
+		$query = $this->M_Staff->delete_pengumuman($id);
+		if ($query) {
+			$this->session->set_flashdata('success', 'Delete data berhasil');
+			redirect('StaffController/pengumuman');
+		} else {
+			$this->session->set_flashdata('success', 'Delete data Failed');
+			redirect('StaffController/pengumuman');
+		}
+	}
+
+	public function setting_profil()
+	{
+		$data['sess'] = $this->session->userdata('isStaff');
+		$id = $data['sess'][0]['id'];
+		$data['admin'] = $this->M_Staff->get_staff($id);
+		$this->load->view('admin/template/admin_header');
+		$this->load->view('admin/template/admin_sidebar', $data);
+		$this->load->view('admin/setting_profil', $data);
+		$this->load->view('admin/template/admin_footer');
+	}
+
+	public function edit_admin()
+	{
+		$file = $_FILES['foto']['name'];
+		if ($file == "") {
+			$data['sess'] = $this->session->userdata('isStaff');
+			$id = $data['sess'][0]['id'];
+			$data = [
+				'nama_staff' => $this->input->post('nama'),
+				'jabatan' => $this->input->post('jabatan'),
+				'username' => $this->input->post('username'),
+			];
+			$query = $this->M_Staff->edit_admin($id, $data);
+			if ($query) {
+				$this->session->set_flashdata('success', 'Update data succes');
+				redirect('StaffController/index');
+			} else {
+				$this->session->set_flashdata('success', 'Update data failed');
+				redirect('StaffController/index');
+			}
+		} else {
+			$config['upload_path'] = './asset/image';
+			$config['allowed_types'] = 'png|jpg';
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('foto')) {
+				$this->session->set_flashdata('success', 'Update data failed');
+				redirect('StaffController/index');
+			} else {
+				$data['sess'] = $this->session->userdata('isStaff');
+				$id = $data['sess'][0]['id'];
+				$data = [
+					'nama_staff' => $this->input->post('nama'),
+					'jabatan' => $this->input->post('jabatan'),
+					'username' => $this->input->post('username'),
+					'foto' => $_FILES['foto']['name'],
+				];
+				$query = $this->M_Staff->edit_admin($id, $data);
+				if ($query) {
+					$this->session->set_flashdata('success', 'Update data succes');
+					redirect('StaffController/index');
+				} else {
+					$this->session->set_flashdata('success', 'Update data failed');
+					redirect('StaffController/index');
+				}
+			}
+		}
+	}
+
+	public function setting_password()
+	{
+		$data['sess'] = $this->session->userdata('isStaff');
+		$this->load->view('admin/template/admin_header');
+		$this->load->view('admin/template/admin_sidebar', $data);
+		$this->load->view('admin/setting_password', $data);
+		$this->load->view('admin/template/admin_footer');
+	}
+
 
 
 	public function logout()

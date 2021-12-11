@@ -15,6 +15,11 @@ class M_Staff extends CI_Model
         return $this->db->insert('t_mahasiswa', $data);
     }
 
+    // public function jumlah_siswa()
+    // {
+    //     $this->db->select('id_nim, COUNT(id_nim) as total');
+    // }
+
     // public function id_nim($id)
     // {
     //     $this->db->select('*');
@@ -189,9 +194,22 @@ class M_Staff extends CI_Model
         return $this->db->get()->row_array();
     }
 
+    public function delete_pengumuman($id)
+    {
+        $this->db->where('id_pengumuman', $id);
+        return $this->db->delete('t_pengumuman');
+    }
+
+
     public function update_pengumuman($id, $data)
     {
         $this->db->where('id_pengumuman', $id);
         return $this->db->update('t_pengumuman', $data);
+    }
+
+    public function edit_admin($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('t_staff', $data);
     }
 }

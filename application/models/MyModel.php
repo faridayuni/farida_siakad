@@ -22,7 +22,7 @@ class MyModel extends CI_Model
 		return $this->db->get_where('t_staff', ['username' => $uname, 'password' => $pswd])->result_array();
 	}
 
-	
+
 	public function cari_kelas($cari)
 	{
 		$this->db->select('*');
@@ -40,18 +40,6 @@ class MyModel extends CI_Model
 	{
 		$this->db->where('id_kelas', $id);
 		return $this->db->delete('kelas');
-	}
-
-
-	
-
-
-	
-
-	public function delete_pengumuman($id)
-	{
-		$this->db->where('id_pengumuman', $id);
-		return $this->db->delete('pengumuman');
 	}
 
 	public function cari_pengumuman($cari)

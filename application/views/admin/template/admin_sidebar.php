@@ -35,14 +35,14 @@
                         Pengumuman
                     </a>
 
-                    <div class="sb-sidenav-menu-heading">Addons</div>
-                    <a class="nav-link" href="charts.html">
+                    <div class="sb-sidenav-menu-heading">Pengaturan</div>
+                    <a class="nav-link" href="<?= base_url('StaffController/setting_profil') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Charts
+                        Profil
                     </a>
-                    <a class="nav-link" href="tables.html">
+                    <a class="nav-link" href="<?= base_url('StaffController/setting_password') ?>">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Tables
+                        Ubah Password
                     </a>
                 </div>
             </div>

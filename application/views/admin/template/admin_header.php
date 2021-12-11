@@ -8,6 +8,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Siakad_Admin</title>
+    <link rel="stylesheet" href="<?php echo base_url() ?>asset/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>asset/vendors/base/vendor.bundle.base.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>asset/vendors/DataTables/DataTables-1.10.20/css/jquery.dataTables.css">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="<?= base_url() ?>asset/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -30,7 +33,7 @@
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                   
+
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
