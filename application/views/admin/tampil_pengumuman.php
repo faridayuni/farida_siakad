@@ -1,7 +1,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-            <h1 class="text-center">DATA PENGUMUMAN</h1>
+            <h3 class="text-center mt-4">DATA PENGUMUMAN</h3>
             <br>
             <div class="row">
                 <div class="col-md-8">

@@ -822,6 +822,31 @@ class StaffController extends CI_Controller
 		$this->load->view('admin/template/admin_footer');
 	}
 
+	public function edit_password()
+	{
+		$pswd1 = $this->input->post('pswd1');
+		$pswd2 = $this->input->post('pswd2');
+
+		if ($pswd1 == $pswd2) {
+			$data['sess'] = $this->session->userdata('isStaff');
+			$id = $data['sess'][0]['id'];
+			$data = [
+				'password' => $this->input->post('pswd2'),
+			];
+			$query = $this->M_Staff->edit_password($id, $data);
+			if ($query) {
+				$this->session->set_flashdata('success', 'Update password  data succes');
+				redirect('StaffController/index');
+			} else {
+				$this->session->set_flashdata('success', 'Update password  data failed');
+				redirect('StaffController/index');
+			}
+		} else {
+			$this->session->set_flashdata('success', 'Password Failed Update');
+			redirect('StaffController/setting_password');
+		}
+	}
+
 
 
 	public function logout()

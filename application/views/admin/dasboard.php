@@ -35,11 +35,11 @@
 		</div>
 	</div>
 	<main>
-		<div class="container-fluid px-4">
+		<div class="container-fluid px-3">
 			<!-- <h1 class="mt-4">Siakad</h1>
             <p style="line-height: 5px">Sistem Informasi Akademik Universitas Halu Oleo</p> -->
 
-			<div class="col-xl-5">
+			<div class="">
 				<div class="card mb-4 mt-5">
 					<div class="card-header">
 						<center>

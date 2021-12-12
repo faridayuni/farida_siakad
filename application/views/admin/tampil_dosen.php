@@ -1,7 +1,7 @@
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
-			<h1 class="mt-4">DATA DOSEN FAKULTAS HUKUM</h1>
+			<h3 class="text-center mt-4">DATA DOSEN FAKULTAS HUKUM</h3>
 			<!-- <p style="line-height: 5px">Sistem Informasi Akademik Universitas Halu Oleo</p> -->
 
 

@@ -212,4 +212,10 @@ class M_Staff extends CI_Model
         $this->db->where('id', $id);
         return $this->db->update('t_staff', $data);
     }
+
+    public function edit_password($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('t_staff', $data);
+    }
 }

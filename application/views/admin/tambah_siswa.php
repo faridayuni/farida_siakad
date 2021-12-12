@@ -1,6 +1,6 @@
 <div id="layoutSidenav_content">
 	<main>
-		<div class="container-fluid px-4">
+		<div class="container-fluid px-5">
 			<h1 class="mt-4">Siakad</h1>
 			<p style="line-height: 5px">Sistem Inforamasi Akademik Fakultas Hukum</p>
 
