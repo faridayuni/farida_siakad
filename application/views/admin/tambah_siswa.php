@@ -1,19 +1,18 @@
 <div id="layoutSidenav_content">
 	<main>
-		<div class="container-fluid px-5">
-			<h1 class="mt-4">Siakad</h1>
-			<p style="line-height: 5px">Sistem Inforamasi Akademik Fakultas Hukum</p>
+		<div class="container-fluid px-5 mt-4">
 
 			<?php if (validation_errors()) : ?>
 				<div class="alert alert-warning">
 					<p><?php echo validation_errors() ?></p>
 				</div>
 			<?php endif ?>
-			
+
 			<div class="card mb-4">
 				<div class="card-header">
-					<i class="fas fa-table me-1"></i>
-					Tambah Data Mahasiswa
+					<center>
+						<h3>Tambah Data Mahasiswa</h3>
+					</center>
 				</div>
 				<div class="card-body">
 					<?= form_open_multipart('StaffController/do_siswa'); ?>
@@ -84,11 +83,15 @@
 
 
 					<button type="submit" class="btn btn-success mt-3">Simpan</button>
+
 				</div>
 
 
 
 				<?= form_close(); ?>
+				<div class="card-body">
+					<center><a href="<?= base_url('StaffController/siswa') ?>" class="btn btn-secondary">Back</a></center>
+				</div>
 			</div>
 		</div>
 	</main>

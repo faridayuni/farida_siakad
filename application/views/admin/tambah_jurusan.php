@@ -1,7 +1,7 @@
 <div id="layoutSidenav_content">
     <main>
-        <div class="container-fluid px-4">
-            <h1 class="text-center">Tambah Jurusan</h1>
+        <div class="container-fluid px-4 mt-4">
+            <h3 class="text-center">Tambah Jurusan</h3>
             <?php if (validation_errors()) : ?>
                 <div class="alert alert-danger">
                     <p><?php echo validation_errors() ?></p>
@@ -20,6 +20,7 @@
                 </div>
 
                 <input type="submit" value="SIMPAN" class="btn btn-info">
+                | <a href="<?= base_url('StaffController/jurusan') ?>" class="btn btn-secondary">Back</a>
             </form>
         </div>
 

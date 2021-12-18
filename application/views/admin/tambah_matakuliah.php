@@ -1,7 +1,7 @@
 <div id="layoutSidenav_content">
     <main>
-        <div class="container-fluid px-4">
-            <h1 class="text-center">Tambah Dosen</h1>
+        <div class="container-fluid px-4 mt-4">
+            <h3 class="text-center">Tambah Matakuliah</h3>
             <?php if (validation_errors()) : ?>
                 <div class="alert alert-danger">
                     <p><?php echo validation_errors() ?></p>
@@ -30,6 +30,14 @@
                         <option>6</option>
                         <option>7</option>
                         <option>8</option>
+                    </select>
+                    <!-- <input type="text" name="nama" class="form-control" value="<?php echo set_value('nama_matkul') ?>"> -->
+                </div>
+                <div class="form-group">
+                    <label>Masukan Keterangan</label>
+                    <select name="ket" class="form-control">
+                        <option>ganjil</option>
+                        <option>genap</option>
                     </select>
                     <!-- <input type="text" name="nama" class="form-control" value="<?php echo set_value('nama_matkul') ?>"> -->
                 </div>
@@ -83,7 +91,7 @@
                     <label>Masukan Jam Selesai</label>
                     <input type="time" name="jam_selesai" class="form-control" value="<?php echo set_value('jam_selesai') ?>">
                 </div>
-                <input type="submit" value="SIMPAN" class="btn btn-info">
+                <input type="submit" value="SIMPAN" class="btn btn-info"> | <a href="<?= base_url('StaffController/matakuliah') ?>" class="btn btn-secondary">Back</a>
             </form>
         </div>
 

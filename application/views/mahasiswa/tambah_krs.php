@@ -1,20 +1,3 @@
-<!-- <div id="myModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-
-		<! Modal content-->
-<!-- <div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Tambah Matakuliah</h4>
-			</div>
-			<div class="modal-body">
-				<form action="<?php echo base_url('StaffController/tambah_matakuliah') ?>" method="post">
-				</form>
-			</div>
-		</div> -->
-<!-- 
-</div>
-</div> -->
-
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
@@ -23,10 +6,10 @@
 
 
 			<div class="card mb-4 mt-5">
-				<div class="card-header">
+				<!-- <div class="card-header">
 					<a href="<?= base_url('StaffController/tambah_matakuliah') ?>" class="btn btn-outline-secondary"><i class="fas fa-plus me-1"></i>Tambah Matakuliah</a>
 
-				</div>
+				</div> -->
 				<div class="card-body">
 					<?php if ($this->session->flashdata('success')) : ?>
 						<div class="alert alert-success">
@@ -83,8 +66,8 @@
 									<td><?php echo $s['jam_mulai'] ?></td>
 									<td><?php echo $s['jam_selesai'] ?></td>
 									<td>
-										<a href="<?php echo base_url() ?>StaffController/edit_matakuliah/<?php echo $s['id_matkul']  ?>" class="btn btn-info btn-sm"><i class="fas fa-pen"></i> Edit</a>
-										| | <a onclick="return confirm('Hapus data ..?')" href="<?php echo base_url() ?>StaffController/delete_matakuliah/<?php echo $s['id_matkul']  ?>" class="btn btn-warning btn-sm"><i class="fas fa-trash-alt"></i></a>
+										<a href="<?php echo base_url() ?>MahasiswaController/krs_penawaran/<?php echo $s['id_matkul']  ?>" class="btn btn-info btn-sm">Tawar</a>
+
 									</td>
 								</tr>
 							<?php endforeach ?>

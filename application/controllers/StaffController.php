@@ -23,14 +23,12 @@ class StaffController extends CI_Controller
 
 		$data['sess'] = $this->session->userdata('isStaff');
 		$id = $data['sess'][0]['id'];
-		// $data['admin'] = $this->M_Staff->get_staff($id);
-		// $data['jumlah'] = $this->db->from('t_mahasiswa')->get()->num_rows();
-		// $data['jumlah_dosen'] = $this->db->from('t_dosen')->get()->num_rows();
 		$data = array(
 			'sess' => $this->session->userdata('isStaff'),
 			'admin' => $this->M_Staff->get_staff($id),
 			'jumlah' => $this->db->from('t_mahasiswa')->get()->num_rows(),
-			'jumlah_dosen' => $this->db->from('t_dosen')->get()->num_rows()
+			'jumlah_dosen' => $this->db->from('t_dosen')->get()->num_rows(),
+			'title' => 'Siakad Admin-Dashboard'
 		);
 		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
@@ -40,20 +38,15 @@ class StaffController extends CI_Controller
 
 	public function siswa()
 	{
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'siswa' => $this->M_Mahasiswa->get_siswa(),
+			'jurusan' =>  $this->M_Staff->get_jurusan(),
+			'no' => 1,
+			'title' => 'Siakad Admin-Mahasiswa'
+		);
 
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['siswa'] = $this->M_Mahasiswa->get_siswa();
-		$data['jurusan'] = $this->M_Staff->get_jurusan();
-		$data['no'] = 1;
-
-		// $jumlah = count($data['siswa']);
-		//pagination
-		// $config['base_url'] = 'http://localhost/siakad/StaffController/cari_siswa/';
-		// $config['total_rows'] = $jumlah;
-		// $config['per_page'] = 2;
-		// $this->pagination->initialize($config);
-
-		$this->load->view('admin/template/admin_header');
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tampil_mahasiswa', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -61,9 +54,13 @@ class StaffController extends CI_Controller
 
 	public function tambah_siswa()
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['jurusan'] = $this->M_Staff->get_jurusan();
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'jurusan' =>  $this->M_Staff->get_jurusan(),
+			'title' => 'Siakad Admin-Mahasiswa'
+		);
+
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tambah_siswa', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -77,9 +74,12 @@ class StaffController extends CI_Controller
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 		$this->form_validation->set_rules('telepon', 'Alamat', 'required');
 		if ($this->form_validation->run() == false) {
-			$data['sess'] = $this->session->userdata('isStaff');
-			$data['jurusan'] = $this->M_Staff->get_jurusan();
-			$this->load->view('admin/template/admin_header');
+			$data = array(
+				'sess' =>  $this->session->userdata('isStaff'),
+				'jurusan' =>  $this->M_Staff->get_jurusan(),
+				'title' => 'Siakad Admin-Mahasiswa'
+			);
+			$this->load->view('admin/template/admin_header', $data);
 			$this->load->view('admin/template/admin_sidebar', $data);
 			$this->load->view('admin/tambah_siswa', $data);
 			$this->load->view('admin/template/admin_footer');
@@ -123,11 +123,13 @@ class StaffController extends CI_Controller
 
 	public function edit_siswa($id)
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['jurusan'] = $this->M_Staff->get_jurusan();
-		$data['siswa'] = $this->M_Mahasiswa->id_nim($id);
-		//var_dump($data['siswa']);
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'jurusan' =>  $this->M_Staff->get_jurusan(),
+			'siswa' =>  $this->M_Mahasiswa->id_mahasiswa($id),
+			'title' => 'Siakad Admin-Mahasiswa'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/edit_siswa', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -193,9 +195,12 @@ class StaffController extends CI_Controller
 
 	public function show_siswa($id)
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['siswa'] = $this->M_Mahasiswa->id_nim($id);
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'siswa' =>  $this->M_Mahasiswa->id_mahasiswa($id),
+			'title' => 'Siakad Admin-Mahasiswa'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/show_siswa', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -213,23 +218,16 @@ class StaffController extends CI_Controller
 		}
 	}
 
-	// public function cari_siswa()
-	// {
-	// 	$data['sess'] = $this->session->userdata('isStaff');
-	// 	$data['siswa'] = $this->M_Staff->cari_siswa();
-	// 	$data['no'] = 1;
-	// 	$this->load->view('admin/template/header');
-	// 	$this->load->view('admin/template/menu', $data);
-	// 	$this->load->view('admin/siswa', $data);
-	// 	$this->load->view('admin/template/footer');
-	// }
-
+	//DOSEN PAGEEEEE
 	public function dosen()
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['dosen'] = $this->M_Dosen->get_dosen();
-		$data['no'] = 1;
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'dosen' =>  $this->M_Dosen->get_dosen(),
+			'no' => 1,
+			'title' => 'Siakad Admin-Dosen'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tampil_dosen', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -237,10 +235,11 @@ class StaffController extends CI_Controller
 
 	public function tambah_dosen()
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		//$data['pelajaran'] = $this->Models->get_pelajaran();
-		//$data['kelas'] = $this->Models->get_kelas();
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'title' => 'Siakad Admin-Dosen'
+		);
+		$this->load->view('admin/template/admin_header',$data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tambah_dosen', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -256,10 +255,11 @@ class StaffController extends CI_Controller
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
 		if ($this->form_validation->run() == false) {
-			$data['sess'] = $this->session->userdata('isStaff');
-			// $data['pelajaran'] = $this->Models->get_pelajaran();
-			// $data['kelas'] = $this->Models->get_kelas();
-			$this->load->view('admin/template/admin_header');
+			$data = array(
+				'sess' =>  $this->session->userdata('isStaff'),
+				'title' => 'Siakad Admin-Dosen'
+			);
+			$this->load->view('admin/template/admin_header', $data);
 			$this->load->view('admin/template/admin_sidebar', $data);
 			$this->load->view('admin/tambah_dosen', $data);
 			$this->load->view('admin/template/admin_footer');
@@ -303,11 +303,12 @@ class StaffController extends CI_Controller
 
 	public function edit_dosen($id)
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		// $data['pelajaran'] = $this->Models->get_pelajaran();
-		// $data['kelas'] = $this->Models->get_kelas();
-		$data['dosen'] = $this->M_Dosen->id_dosen($id);
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'dosen' => $this->M_Dosen->id_dosen($id),
+			'title' => 'Siakad Admin-Dosen'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/edit_dosen', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -377,9 +378,13 @@ class StaffController extends CI_Controller
 
 	public function show_dosen($id)
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['dosen'] = $this->M_Dosen->id_dosen($id);
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'dosen' => $this->M_Dosen->id_dosen($id),
+			'title' => 'Siakad Admin-Dosen'
+		);
+
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/show_dosen', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -397,24 +402,16 @@ class StaffController extends CI_Controller
 		}
 	}
 
-	// public function search_dosen()
-	// {
-	// 	$cari = $this->input->post('cari');
-	// 	$data['sess'] = $this->session->userdata('isStaff');
-	// 	$data['dosen'] = $this->M_Staff->search_dosen($cari);
-	// 	$data['no'] = 1;
-	// 	$this->load->view('admin/template/header');
-	// 	$this->load->view('admin/template/menu', $data);
-	// 	$this->load->view('admin/tampil_dosen', $data);
-	// 	$this->load->view('admin/template/footer');
-	// }
-
+	//MATAKULIAH PAGE
 	public function matakuliah()
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['matkul'] = $this->M_Staff->get_matakuliah();
-		$data['no'] = 1;
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'matkul' => $this->M_Staff->get_matakuliah(),
+			'no' => 1,
+			'title' => 'Siakad Admin-Matakuliah'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tampil_matakuliah', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -422,29 +419,16 @@ class StaffController extends CI_Controller
 
 	public function tambah_matakuliah()
 	{
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'matakuliah' => $this->M_Staff->get_matakuliah(),
+			'kelas' => $this->M_Staff->get_kelas(),
+			'dosen' => $this->M_Dosen->get_dosen(),
+			'jurusan' => $this->M_Staff->get_jurusan(),
+			'title' => 'Siakad Admin-Matakuliah'
+		);
 
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['matakuliah'] = $this->M_Staff->get_matakuliah();
-		$data['kelas'] = $this->M_Staff->get_kelas();
-		$data['dosen'] = $this->M_Dosen->get_dosen();
-		$data['jurusan'] = $this->M_Staff->get_jurusan();
-
-
-		// $data = [
-		// 	'nama_pelajaran' => $this->input->post('nama'),
-		// 	'jam_pelajaran' => $this->input->post('jam'),
-		// ];
-
-		// $query = $this->M_Staff->post_matakuliah($data);
-		// if ($query) {
-		// 	$this->session->set_flashdata('success', 'Tambah data berhasil');
-		// 	redirect('StaffController/matakuliah');
-		// } else {
-		// 	$this->session->set_flashdata('success', 'Tambah data Failed');
-		// 	redirect('StaffController/matakuliah');
-		// }
-
-		$this->load->view('admin/template/admin_header');
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tambah_matakuliah', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -458,11 +442,15 @@ class StaffController extends CI_Controller
 		$this->form_validation->set_rules('sks', 'SKS', 'required');
 		// $this->form_validation->set_rules('jadwal', 'Jadwal', 'required');
 		if ($this->form_validation->run() == false) {
-			$data['sess'] = $this->session->userdata('isStaff');
-			$data['kelas'] = $this->M_Staff->get_kelas();
-			$data['dosen'] = $this->M_Dosen->get_dosen();
-			$data['jurusan'] = $this->M_Staff->get_jurusan();
-			$this->load->view('admin/template/header');
+			$data = array(
+				'sess' =>  $this->session->userdata('isStaff'),
+				'matakuliah' => $this->M_Staff->get_matakuliah(),
+				'kelas' => $this->M_Staff->get_kelas(),
+				'dosen' => $this->M_Dosen->get_dosen(),
+				'jurusan' => $this->M_Staff->get_jurusan(),
+				'title' => 'Siakad Admin-Matakuliah'
+			);
+			$this->load->view('admin/template/header', $data);
 			$this->load->view('admin/template/menu', $data);
 			$this->load->view('admin/tambah_matakuliah', $data);
 			$this->load->view('admin/template/footer');
@@ -472,6 +460,7 @@ class StaffController extends CI_Controller
 				'nama_matkul' => $this->input->post('nama'),
 				'semester' => $this->input->post('smt'),
 				'sks' => $this->input->post('sks'),
+				'ket' => $this->input->post('ket'),
 				'id_kelas' => $this->input->post('kelas'),
 				'id_dosen' => $this->input->post('dosen'),
 				'id_jurusan' => $this->input->post('jurusan'),
@@ -493,12 +482,16 @@ class StaffController extends CI_Controller
 
 	public function edit_matakuliah($id)
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['matakuliah'] = $this->M_Staff->edit_matakuliah($id);
-		$data['kelas'] = $this->M_Staff->get_kelas();
-		$data['dosen'] = $this->M_Dosen->get_dosen();
-		$data['jurusan'] = $this->M_Staff->get_jurusan();
-		$this->load->view('admin/template/admin_header');
+
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'matakuliah' => $this->M_Staff->edit_matakuliah($id),
+			'kelas' => $this->M_Staff->get_kelas(),
+			'dosen' => $this->M_Dosen->get_dosen(),
+			'jurusan' => $this->M_Staff->get_jurusan(),
+			'title' => 'Siakad Admin-Matakuliah'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/edit_matakuliah');
 		$this->load->view('admin/template/admin_footer');
@@ -512,6 +505,7 @@ class StaffController extends CI_Controller
 			'nama_matkul' => $this->input->post('nama'),
 			'semester' => $this->input->post('smt'),
 			'sks' => $this->input->post('sks'),
+			'ket' => $this->input->post('ket'),
 			'id_kelas' => $this->input->post('kelas'),
 			'id_dosen' => $this->input->post('dosen'),
 			'id_jurusan' => $this->input->post('jurusan'),
@@ -543,25 +537,16 @@ class StaffController extends CI_Controller
 		}
 	}
 
-
-	// public function search_matakuliah()
-	// {
-	// 	$cari = $this->input->post('cari');
-	// 	$data['sess'] = $this->session->userdata('isStaff');
-	// 	$data['matakuliah'] = $this->M_Staff->search_matakuliah($cari);
-	// 	$data['no'] = 1;
-	// 	$this->load->view('admin/template/header');
-	// 	$this->load->view('admin/template/menu', $data);
-	// 	$this->load->view('admin/tampil_matakuliah', $data);
-	// 	$this->load->view('admin/template/footer');
-	// }
-
+	////JURUSAN PAGE////////////////////
 	public function jurusan()
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['jurusan'] = $this->M_Staff->get_jurusan();
-		$data['no'] = 1;
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'jurusan' => $this->M_Staff->get_jurusan(),
+			'no' => 1,
+			'title' => 'Siakad Admin-Jurusan'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tampil_jurusan', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -569,11 +554,13 @@ class StaffController extends CI_Controller
 
 	public function tambah_jurusan()
 	{
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'jurusan' => $this->M_Staff->get_jurusan(),
+			'title' => 'Siakad Admin-Jurusan'
+		);
 
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['jurusan'] = $this->M_Staff->get_jurusan();
-
-		$this->load->view('admin/template/admin_header');
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tambah_jurusan', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -584,9 +571,13 @@ class StaffController extends CI_Controller
 		$this->form_validation->set_rules('id', 'ID', 'required|max[10]');
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		if ($this->form_validation->run() == false) {
-			$data['sess'] = $this->session->userdata('isStaff');
-			$data['jurusan'] = $this->M_Staff->get_jurusan();
-			$this->load->view('admin/template/admin_header');
+			$data = array(
+				'sess' =>  $this->session->userdata('isStaff'),
+				'jurusan' => $this->M_Staff->get_jurusan(),
+				'title' => 'Siakad Admin-Jurusan'
+			);
+
+			$this->load->view('admin/template/admin_header', $data);
 			$this->load->view('admin/template/admin_sidebar', $data);
 			$this->load->view('admin/tambah_jurusan', $data);
 			$this->load->view('admin/template/admin_footer');
@@ -618,12 +609,17 @@ class StaffController extends CI_Controller
 		}
 	}
 
+
+	///////// KEALAS PAGE //////////
 	public function kelas()
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['kelas'] = $this->M_Staff->get_kelas();
-		$data['no'] = 1;
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'kelas' => $this->M_Staff->get_kelas(),
+			'no' => 1,
+			'title' => 'Siakad Admin-Kelas'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tampil_kelas', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -631,11 +627,12 @@ class StaffController extends CI_Controller
 
 	public function tambah_kelas()
 	{
-
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['kelas'] = $this->M_Staff->get_kelas();
-
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'kelas' => $this->M_Staff->get_kelas(),
+			'title' => 'Siakad Admin-Kelas'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tambah_kelas', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -646,9 +643,12 @@ class StaffController extends CI_Controller
 		$this->form_validation->set_rules('id', 'ID', 'required|max[10]');
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		if ($this->form_validation->run() == false) {
-			$data['sess'] = $this->session->userdata('isStaff');
-			$data['kelas'] = $this->M_Staff->get_kelas();
-			$this->load->view('admin/template/admin_header');
+			$data = array(
+				'sess' =>  $this->session->userdata('isStaff'),
+				'kelas' => $this->M_Staff->get_kelas(),
+				'title' => 'Siakad Admin-Kelas'
+			);
+			$this->load->view('admin/template/admin_header', $data);
 			$this->load->view('admin/template/admin_sidebar', $data);
 			$this->load->view('admin/tambah_kelas', $data);
 			$this->load->view('admin/template/admin_footer');
@@ -680,12 +680,84 @@ class StaffController extends CI_Controller
 		}
 	}
 
+	//////////PERIODE PAGE////////////////////
+	public function periode()
+	{
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'periode' => $this->M_Staff->get_periode(),
+			'no' => 1,
+			'title' => 'Siakad Admin-Periode'
+		);
+		$this->load->view('admin/template/admin_header', $data);
+		$this->load->view('admin/template/admin_sidebar', $data);
+		$this->load->view('admin/tampil_periode', $data);
+		$this->load->view('admin/template/admin_footer');
+	}
+
+	public function tambah_periode()
+	{
+		$data = [
+			// 'id_periode' => $this->input->post('id'),
+			'periode' => $this->input->post('periode'),
+			'ket' => $this->input->post('keterangan'),
+			'status' => $this->input->post('status'),
+		];
+
+		$query = $this->M_Staff->tambah_periode($data);
+		if ($query) {
+			$this->session->set_flashdata('success', 'Tambah data berhasil');
+			redirect('StaffController/periode');
+		} else {
+			$this->session->set_flashdata('success', 'Tambah data Failed');
+			redirect('StaffController/periode');
+		}
+	}
+
+	public function edit_periode()
+	{
+		$this->form_validation->set_rules('mod_id', 'mod_id', 'required');
+		$this->form_validation->set_rules('mod_name', 'mod_name', 'required');
+		if ($this->form_validation->run() == FALSE) {
+			$this->session->set_flashdata('error', "Data Gagal Di Edit");
+			redirect('StaffController/periode');
+		} else {
+			$data = array(
+				"periode" => $_POST['mod_name'],
+				"ket" => $_POST['mod_ket'],
+				"status" => $_POST['mod_status']
+			);
+
+			$this->db->where('id_periode', $_POST['mod_id']);
+			$this->db->update('t_periode', $data);
+			$this->session->set_flashdata('sukses', "Data Berhasil Diedit");
+			redirect('StaffController/periode');
+		}
+	}
+
+	public function delete_periode($id)
+	{
+		if ($id == "") {
+			$this->session->set_flashdata('error', "Data Anda Gagal Di Hapus");
+			redirect('StaffController/periode');
+		} else {
+			$this->db->where('id_periode', $id);
+			$this->db->delete('t_periode');
+			$this->session->set_flashdata('sukses', "Data Berhasil Dihapus");
+			redirect('StaffController/periode');
+		}
+	}
+
+	////////// PENGUMUMAN PAGE ////////////
 	public function pengumuman()
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['pengumuman'] = $this->M_Staff->get_pengumuman();
-		$data['no'] = 1;
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'pengumuman' => $this->M_Staff->get_pengumuman(),
+			'no' => 1,
+			'title' => 'Siakad Admin-Pengumuman'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/tampil_pengumuman', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -697,7 +769,6 @@ class StaffController extends CI_Controller
 			'id_pengumuman' => $this->input->post('id'),
 			'judul' => $this->input->post('judul'),
 			'deskripsi' => $this->input->post('deskripsi'),
-			// 'status' => 1,
 			'tujuan' => $this->input->post('tujuan'),
 			'tanggal' => $this->input->post('tanggal'),
 		];
@@ -714,10 +785,13 @@ class StaffController extends CI_Controller
 
 	public function edit_pengumuman($id)
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$data['pengumuman'] = $this->M_Staff->edit_pengumuman($id);
-		$data['no'] = 1;
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'pengumuman' => $this->M_Staff->edit_pengumuman($id),
+			'no' => 1,
+			'title' => 'Siakad Admin-Pengumuman'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/edit_pengumuman', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -755,12 +829,17 @@ class StaffController extends CI_Controller
 		}
 	}
 
+	////////// PENGATURAN PAGE //////////
 	public function setting_profil()
 	{
 		$data['sess'] = $this->session->userdata('isStaff');
 		$id = $data['sess'][0]['id'];
-		$data['admin'] = $this->M_Staff->get_staff($id);
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'admin' => $this->M_Staff->get_staff($id),
+			'title' => 'Siakad Admin-Profil'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/setting_profil', $data);
 		$this->load->view('admin/template/admin_footer');
@@ -815,8 +894,11 @@ class StaffController extends CI_Controller
 
 	public function setting_password()
 	{
-		$data['sess'] = $this->session->userdata('isStaff');
-		$this->load->view('admin/template/admin_header');
+		$data = array(
+			'sess' =>  $this->session->userdata('isStaff'),
+			'title' => 'Siakad Admin-Password'
+		);
+		$this->load->view('admin/template/admin_header', $data);
 		$this->load->view('admin/template/admin_sidebar', $data);
 		$this->load->view('admin/setting_password', $data);
 		$this->load->view('admin/template/admin_footer');

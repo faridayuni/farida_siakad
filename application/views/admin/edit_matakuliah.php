@@ -32,6 +32,18 @@
 				</div>
 
 				<div class="form-group">
+					<label>Masukan Keterangan</label>
+					<select name="ket" class="form-control">
+						<option><?= $matakuliah['ket'] ?></option>
+						<option><b>---Pilih keterangan lain :---</b></option>
+						<option value="ganjil">ganjil</option>
+						<option value="genap">genap</option>
+					</select>
+					<!-- <input type="text" name="nama" class="form-control" value="<?php echo set_value('nama_matkul') ?>"> -->
+				</div>
+
+
+				<div class="form-group">
 					<label>Masukan SKS</label>
 					<input type="text" name="sks" class="form-control" value="<?php echo $matakuliah['sks'] ?>">
 				</div>

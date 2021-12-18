@@ -8,11 +8,12 @@
 
 <body>
 
-	<div class="col-md-4"></div>
 	<div class="col-md-4">
-		<h3 class="text-center">LOGIN AKUN</h3>
-		<br>
+	</div>
+	<div class="col-md-4" style="padding-top: 4cm;">
 		<div class="panel panel-default">
+			<h3 class="text-center">LOGIN AKUN SIAKAD</h3>
+			<br>
 			<div class="panel-heading">
 				<form action=" <?php echo base_url('LoginController/DoLogin') ?> " method="post">
 					<div class="form-group">

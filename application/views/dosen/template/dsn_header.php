@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Siakad_Mahasiswa</title>
+    <title>Siakad_Admin</title>
     <link rel="stylesheet" href="<?php echo base_url() ?>asset/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>asset/vendors/base/vendor.bundle.base.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>asset/vendors/DataTables/DataTables-1.10.20/css/jquery.dataTables.css">
@@ -15,17 +15,6 @@
     <link href="<?= base_url() ?>asset/css/styles.css" rel="stylesheet" />
     <link href="<?= base_url() ?>asset/css/style.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript">
-        function printArea(area) {
-            var printPage = document.getElemenById(area).innerHTML;
-            var oriPage = document.body.innerHTML;
-            document.body.innerHTML = printPage;
-            window.print();
-            document.body.innerHTML = oriPage;
-        }
-    </script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -45,15 +34,15 @@
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="<?= base_url('asset/image/' . $sess[0]['foto']) ?>" width="40" class="img-profile rounded-circle">
+                    <img src="<?= base_url('asset/image/' . $sess[0]['foto']) ?>" width="35" class="img-profile rounded-circle">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="<?= base_url('MahasiswaController/setting_profil') ?>">Setting_Profil</a></li>
-                    <li><a class="dropdown-item" href="<?= base_url('MahasiswaController/setting_password') ?>">Setting_Password</a></li>
+                    <li><a class="dropdown-item" href="<?= base_url('StaffController/setting_profil') ?>">Setting_Profil</a></li>
+                    <li><a class="dropdown-item" href="<?= base_url('StaffController/setting_password') ?>">Setting_Password</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="<?= base_url('MahasiswaController/logout') ?>">Logout</a></li>
+                    <li><a class="dropdown-item" href="<?= base_url('StaffController/logout') ?>">Logout</a></li>
                 </ul>
             </li>
         </ul>

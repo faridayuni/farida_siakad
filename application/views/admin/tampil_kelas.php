@@ -42,7 +42,7 @@
                                     <td><?php echo $k['id_kelas'] ?></td>
                                     <td><?php echo $k['nama_kelas'] ?></td>
                                     <td>
-                                        <a onclick="return confirm('Hapus data ..?')" href="<?php echo base_url() ?>StaffController/delete_kelas/<?php echo $k['id_kelas'] ?>" class="btn btn-warning btn-sm">HAPUS</a>
+                                        <a onclick="return confirm('Hapus data ..?')" href="<?php echo base_url() ?>StaffController/delete_kelas/<?php echo $k['id_kelas'] ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

@@ -9,12 +9,12 @@ class MyModel extends CI_Model
 
 	public function login_mahasiswa($uname, $pswd)
 	{
-		return $this->db->get_where('t_mahasiswa', ['id_nim' => $uname, 'password' => $pswd])->result_array();
+		return $this->db->get_where('t_mahasiswa', ['username' => $uname, 'password' => $pswd])->result_array();
 	}
 
 	public function login_dosen($uname, $pswd)
 	{
-		return $this->db->get_where('t_dosen', ['id_nidn' => $uname, 'password_dosen' => $pswd])->result_array();
+		return $this->db->get_where('t_dosen', ['username' => $uname, 'password' => $pswd])->result_array();
 	}
 
 	public function login_staff($uname, $pswd)
@@ -186,7 +186,7 @@ class MyModel extends CI_Model
 		return $this->db->get()->result_array();
 	}
 
-	
+
 
 	public function cari_pengumumansiswa($cari)
 	{

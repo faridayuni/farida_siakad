@@ -49,9 +49,10 @@
 									<td><?php echo $s['nama'] ?></td>
 									<td><?php echo $s['angkatan'] ?></td>
 									<td>
-										<a href="<?php echo base_url() ?>StaffController/edit_siswa/<?php echo $s['id_nim'] ?>" class="btn btn-info btn-sm">EDIT</a>
-										<a onclick="return confirm('Hapus data ..?')" href="<?php echo base_url() ?>StaffController/hapus_siswa/<?php echo $s['id_nim'] ?>" class="btn btn-warning btn-sm">HAPUS</a>
-										<a href="<?php echo base_url() ?>StaffController/show_siswa/<?php echo $s['id_nim'] ?>" class="btn btn-success btn-sm">SHOW</a>
+										<a href="<?php echo base_url() ?>StaffController/show_siswa/<?php echo $s['id_nim'] ?>" class="btn btn-success btn-sm"><i class="fas fa-eye"></i> Detail</a>
+										| | <a href="<?php echo base_url() ?>StaffController/edit_siswa/<?php echo $s['id_nim'] ?>" class="btn btn-info btn-sm"><i class="fas fa-pen"></i> Edit</a>
+										| | <a onclick="return confirm('Hapus Data Mahasiswa ..?')" href="<?php echo base_url() ?>StaffController/hapus_siswa/<?php echo $s['id_nim'] ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+
 									</td>
 								</tr>
 							<?php

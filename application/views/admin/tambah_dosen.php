@@ -12,8 +12,10 @@
 
 			<div class="card mb-4 mt-3">
 				<div class="card-header">
-					<i class="fas fa-table me-1"></i>
-					Tambah Data Dosen
+					<center>
+						<h3>Tambah Data Dosen</h3>
+					</center>
+
 				</div>
 				<div class="card-body">
 					<?= form_open_multipart('StaffController/post_dosen'); ?>
@@ -72,6 +74,9 @@
 
 
 				<?= form_close(); ?>
+				<div class="card-body">
+					<center><a href="<?= base_url('StaffController/dosen') ?>" class="btn btn-secondary">Back</a></center>
+				</div>
 			</div>
 		</div>
 	</main>

@@ -42,9 +42,9 @@
 									<td><?php echo $s['id_nidn'] ?></td>
 									<td><?php echo $s['nama_dosen'] ?></td>
 									<td>
-										<a href="<?php echo base_url() ?>StaffController/edit_dosen/<?php echo $s['id_nidn'] ?>" class="btn btn-info btn-sm">EDIT</a>
-										<a href="<?php echo base_url() ?>StaffController/show_dosen/<?php echo $s['id_nidn'] ?>" class="btn btn-success btn-sm">DETAIL</a>
-										<a onclick="return confirm('Hapus data ..?')" href="<?php echo base_url() ?>StaffController/delete_dosen/<?php echo $s['id_nidn'] ?>" class="btn btn-warning btn-sm">HAPUS</a>
+										<a href="<?php echo base_url() ?>StaffController/show_dosen/<?php echo $s['id_nidn'] ?>" class="btn btn-success btn-sm"><i class="fas fa-eye"></i> Detail</a>
+										| |<a href="<?php echo base_url() ?>StaffController/edit_dosen/<?php echo $s['id_nidn'] ?>" class="btn btn-info btn-sm"><i class="fas fa-pen"></i> Edit</a>
+										| |<a onclick="return confirm('Hapus Data Dosen ..?')" href="<?php echo base_url() ?>StaffController/delete_dosen/<?php echo $s['id_nidn'] ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
 									</td>
 								</tr>
 							<?php endforeach ?>

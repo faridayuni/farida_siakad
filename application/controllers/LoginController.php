@@ -37,7 +37,7 @@ class LoginController extends CI_Controller
 			$query = $this->Models->login_dosen($uname, $pswd);
 			if (count($query) > 0) {
 				$this->session->set_userdata([
-					'isGuru' => $query
+					'isDosen' => $query
 				]);
 				redirect('DosenController/index');
 			} else {

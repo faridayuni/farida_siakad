@@ -42,7 +42,7 @@
                                     <td><?php echo $j['id_jurusan'] ?></td>
                                     <td><?php echo $j['nama'] ?></td>
                                     <td>
-                                        <a onclick="return confirm('Hapus data ..?')" href="<?php echo base_url() ?>StaffController/delete_jurusan/<?php echo $j['id_jurusan'] ?>" class="btn btn-warning btn-sm">HAPUS</a>
+                                        <a onclick="return confirm('Hapus data ..?')" href="<?php echo base_url() ?>StaffController/delete_jurusan/<?php echo $j['id_jurusan'] ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

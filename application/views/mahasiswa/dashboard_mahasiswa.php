@@ -1,11 +1,30 @@
 <div id="layoutSidenav_content">
     <div class="container-fluid px-3">
+
         <main>
-            <!-- <h1 class="mt-4">Siakad</h1>
-            <p style="line-height: 5px">Sistem Informasi Akademik Universitas Halu Oleo</p> -->
+            <div class="row">
+                <div class="col-xl-2 mt-3 ml-5">
+                    <div class="card bg-light text-black mb-4">
+                        <div class="card-body">
+                            <center>Pengumuman : <?= $jumlah ?></center>
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between bg-dark">
+                            <a class="small text-white stretched-link" href="<?= base_url('MahasiswaController/tampil_pengumuman') ?>">View Details</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 mt-4 ml-4">
+                    <div class="card bg-light text-black mb-4">
+                        <div class="card-body">
+                            <center style="font-size: x-large;"><strong>Selamat Datang Di Website Siakad Fakultas Hukum</strong> </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="">
-                <div class="card mb-4 mt-5">
+                <div class="card mb-4 mt-5 ml-3">
                     <div class="card-header">
                         <center>
                             <h3>Profil Mahasiswa</h3>

@@ -174,6 +174,33 @@ class M_Staff extends CI_Model
         return $this->db->delete('t_kelas');
     }
 
+    ///PERIODE
+    public function get_periode()
+    {
+        return $this->db->get('t_periode')->result_array();
+    }
+
+    public function tambah_periode($data)
+    {
+        return $this->db->insert('t_periode', $data);
+    }
+
+    // public function edit_periode($id)
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('t_periode');
+    //     $this->db->where('id_periode', $id);
+    //     return $this->db->get()->row_array();
+    // }
+
+    public function edit_periode($data, $id)
+    {
+        $this->db->where('id_periode', $id);
+        $this->db->update('t_periode', $data);
+        return TRUE;
+    }
+
+
     //PENGUMUMAN
     public function get_pengumuman()
     {

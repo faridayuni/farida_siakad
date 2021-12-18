@@ -21,4 +21,20 @@ class M_Matakuliah extends CI_Model
         $this->db->join('t_kelas', 't_kelas.id_kelas = t_matakuliah.id_kelas');
         return $this->db->get()->result_array();
     }
+
+    public function get_matakuliah_id($id)
+    {
+        $this->db->select('*');
+        $this->db->from('t_matakuliah');
+        $this->db->where('id_matkul', $id);
+        return $this->db->get()->row_array();
+    }
+
+    public function tampilData($id)
+    {
+        $this->db->select('*');
+        $this->db->from('t_matakuliah');
+        $this->db->where('id_matkul', $id);
+        return $this->db->get()->row_array();
+    }
 }
