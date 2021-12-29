@@ -67,7 +67,7 @@
 									<td><?php echo $s['jam_selesai'] ?></td>
 									<td>
 										<a href="<?php echo base_url() ?>MahasiswaController/krs_penawaran/<?php echo $s['id_matkul']  ?>" class="btn btn-info btn-sm">Tawar</a>
-
+										<!-- <a data-toggle="modal" data-target="#modal-edit<?= $s['id_matkul']; ?>" class="btn btn-warning btn-sm btn-circle" data-popup="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-pencil"></i></a> -->
 									</td>
 								</tr>
 							<?php endforeach ?>

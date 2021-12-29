@@ -7,7 +7,7 @@
 
             <div class="card mb-4 mt-5">
                 <div class="card-header">
-                    <button type="button" data-toggle="modal" data-target="#modal" class="btn btn-info">TAMBAH PERIODE</button>
+                    <button type="button" data-toggle="modal" data-target="#modal" class="btn btn-outline-info"><i class="fas fa-plus me-1"></i>TAMBAH PERIODE</button>
                 </div>
                 <div class="card-body">
                     <?php if ($this->session->flashdata('success')) : ?>
@@ -44,7 +44,7 @@
                                     <td><?php echo $p['ket'] ?></td>
                                     <td><?php echo $p['status'] ?></td>
                                     <td>
-                                        <a data-toggle="modal" data-target="#modal-edit<?= $p['id_periode']; ?>" class="btn btn-warning btn-sm btn-circle" data-popup="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-pencil"></i></a>
+                                        <a data-toggle="modal" data-target="#modal-edit<?= $p['id_periode']; ?>" class="btn btn-warning btn-sm btn-circle" data-popup="tooltip" data-placement="top" title="Edit Data"><i class="fas fa-pencil"></i></a> &nbsp; &nbsp;
                                         <a onclick="return confirm('Hapus data ..?')" href="<?php echo base_url() ?>StaffController/delete_periode/<?php echo $p['id_periode'] ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
@@ -81,10 +81,8 @@
                                 <option value="Y">aktif</option>
                                 <option value="N">tidak aktif</option>
                             </select>
-                        </div><br>
-                        <div>
-                            <input type="submit" value="SIMPAN" class="btn btn-info">
                         </div>
+                        <button type="submit" class="btn btn-info">Simpan</button> | <a href="<?= base_url('StaffController/periode') ?>" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>

@@ -128,7 +128,7 @@
         <div id="modal1" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header bg-info">
                         <b> KRS --- Lihat Berdasarkan Periode</b>
                     </div>
                     <div class="modal-body">
@@ -156,7 +156,7 @@
         <div id="modal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header bg-info">
                         <b> Pilih Periode</b>
                     </div>
                     <div class="modal-body">

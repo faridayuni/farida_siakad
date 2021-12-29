@@ -8,7 +8,7 @@
                         <div class="card-body">
                             <center>Pengumuman : <?= $jumlah ?></center>
                         </div>
-                        <div class="card-footer d-flex align-items-center justify-content-between bg-dark">
+                        <div class="card-footer d-flex align-items-center justify-content-between bg-info">
                             <a class="small text-white stretched-link" href="<?= base_url('MahasiswaController/tampil_pengumuman') ?>">View Details</a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
@@ -23,8 +23,8 @@
                 </div>
             </div>
 
-            <div class="">
-                <div class="card mb-4 mt-5 ml-3">
+            <div class="ml-5 mr-4">
+                <div class="card mb-4 mt-5 ml-0">
                     <div class="card-header">
                         <center>
                             <h3>Profil Mahasiswa</h3>

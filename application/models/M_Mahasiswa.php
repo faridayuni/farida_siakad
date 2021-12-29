@@ -84,13 +84,16 @@ class M_Mahasiswa extends CI_Model
     public function get_matakuliah($smt)
     {
         // $where = array('ket' => $smt);
-        $this->db->where('ket', $smt);
+        $this->db->where('t_matakuliah.ket', $smt);
         $this->db->select('t_matakuliah.id_matkul, t_matakuliah.nama_matkul, t_matakuliah.semester, t_matakuliah.sks, 
-        t_kelas.nama_kelas, t_dosen.nama_dosen, t_jurusan.nama, t_matakuliah.hari, t_matakuliah.jam_mulai, t_matakuliah.jam_selesai');
+        t_kelas.nama_kelas, t_dosen.nama_dosen, t_jurusan.nama, t_matakuliah.hari, t_matakuliah.jam_mulai, t_matakuliah.jam_selesai,
+      ');
         $this->db->from('t_matakuliah');
         $this->db->join('t_dosen', 't_matakuliah.id_dosen = t_dosen.id_nidn');
         $this->db->join('t_jurusan', 't_jurusan.id_jurusan = t_matakuliah.id_jurusan');
         $this->db->join('t_kelas', 't_kelas.id_kelas = t_matakuliah.id_kelas');
+        // $this->db->JOIN('t_krs_khs', 't_krs_khs.id_matkul = t_matakuliah.id_matkul');
+        // $this->db->JOIN('t_periode', 't_periode.id_periode = t_krs_khs.periode');
         $query = $this->db->get();
         return $query->result_array();
     }

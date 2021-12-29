@@ -6,7 +6,7 @@
 
 
             <div class="card mb-4 mt-5">
-                <div class="card-header">
+                <div class="card-header bg-info">
                     <i class="fas fa-table me-1"></i>
                     Input KRS
                 </div>
@@ -15,12 +15,13 @@
                     <?= form_open('MahasiswaController/simpan_krs'); ?>
                     <div class="form-group">
 
-                        <select name="periode" class="form-control">
+                        <!-- <select name="periode" class="form-control">
                             <option>Pilih Periode :</option>
                             <?php foreach ($periode as $p) : ?>
                                 <option value="<?= $p['id_periode'] ?>"><?= $p['periode'] ?></option>
                             <?php endforeach; ?>
-                        </select>
+                        </select> -->
+                        <input type="text" name="periode" value="<?= $periode[0]['id_periode'] ?>" class="form-control" readonly>
 
                     </div>
                 </div>
@@ -39,7 +40,7 @@
 
                 <div class="card-body">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="submit" class="btn btn-info">Simpan</button>
                     </div>
                 </div>
 

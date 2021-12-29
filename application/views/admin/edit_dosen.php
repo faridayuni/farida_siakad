@@ -18,7 +18,7 @@
 						<div class="form-group">
 							<label>Masukan NIDN</label>
 							<input type="hidden" name="id" value="<?php echo $dosen['id_nidn'] ?>">
-							<input type="number" name="nidn" class="form-control" value="<?php echo $dosen['id_nidn'] ?>">
+							<input type="text" name="nidn" class="form-control" value="<?php echo $dosen['id_nidn'] ?>">
 						</div>
 					</div>
 

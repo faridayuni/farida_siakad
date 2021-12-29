@@ -18,7 +18,7 @@
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-info">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="#"><i class="fas fa-school"></i> &nbsp;&nbsp; SIAKAD FH</a>
         <!-- Sidebar Toggle-->
@@ -37,12 +37,12 @@
                     <img src="<?= base_url('asset/image/' . $sess[0]['foto']) ?>" width="35" class="img-profile rounded-circle">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="<?= base_url('StaffController/setting_profil') ?>">Setting_Profil</a></li>
-                    <li><a class="dropdown-item" href="<?= base_url('StaffController/setting_password') ?>">Setting_Password</a></li>
+                    <li><a class="dropdown-item" href="<?= base_url('StaffController/setting_profil') ?>"><i class="fas fa-user-cog"></i> &nbsp; Akun</a></li>
+                    <li><a class="dropdown-item" href="<?= base_url('StaffController/setting_password') ?>"><i class="fas fa-cog"></i> &nbsp; Password</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="<?= base_url('StaffController/logout') ?>">Logout</a></li>
+                    <li><a class="dropdown-item" onclick="return confirm('Logout?')" href="<?= base_url('StaffController/logout') ?>">Logout &nbsp; <i class="fas fa-sign-out-alt"></i></a></li>
                 </ul>
             </li>
         </ul>

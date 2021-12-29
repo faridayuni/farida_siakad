@@ -88,6 +88,7 @@
                                 <?php $nomor = 1;
                                 $totalNB = 0;
                                 $totalSKS = 0;
+                                $ip = 0;
                                 foreach ($khs as $row) : $bobot[] = $row->sks;
                                     $totalSKS = array_sum($bobot);
                                     $nxb[] = $row->NxB;
@@ -105,7 +106,6 @@
                                         <!-- <td><?= $row->NxB ?></td> -->
                                     </tr><br>
                                 <?php $nomor++;
-                                    $ip = 0;
                                     $ip = round($totalNB / $totalSKS, 2);
                                 endforeach; ?>
                                 <tr>
@@ -131,7 +131,7 @@
         <div id="modal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header bg-info">
                         <b> KHS --- Lihat Berdasarkan Periode</b>
                     </div>
                     <div class="modal-body">

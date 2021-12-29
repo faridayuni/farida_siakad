@@ -16,23 +16,30 @@ class MahasiswaController extends CI_Controller
 
     public function index()
     {
-        $data['sess'] = $this->session->userdata('isSiswa');
-        $id = $data['sess'][0]['id_nim'];
-        $data['mahasiswa'] = $this->M_Mahasiswa->id_mahasiswa($id);
-        $data['jumlah'] = $this->M_Mahasiswa->get_pengumuman();
+        $data1['sess'] = $this->session->userdata('isSiswa');
+        $id = $data1['sess'][0]['id_nim'];
+        $data = array(
+            'sess' => $this->session->userdata('isSiswa'),
+            'mahasiswa' => $this->M_Mahasiswa->id_mahasiswa($id),
+            'jumlah' => $this->M_Mahasiswa->get_pengumuman(),
+            'title' => 'Siakad Mahasiswa-Dashboard'
+        );
         $this->load->view('mahasiswa/template/mhs_header', $data);
-        $this->load->view('mahasiswa/template/mhs_sidebar');
+        $this->load->view('mahasiswa/template/mhs_sidebar', $data);
         $this->load->view('mahasiswa/dashboard_mahasiswa', $data);
         $this->load->view('mahasiswa/template/mhs_footer');
     }
 
     public function tampil_pengumuman()
     {
-        $data['sess'] = $this->session->userdata('isSiswa');
-        $data['pengumuman'] = $this->M_Mahasiswa->tampil_pengumuman();
-        $data['no'] = 1;
+        $data = array(
+            'sess' => $this->session->userdata('isSiswa'),
+            'pengumuman' => $this->M_Mahasiswa->tampil_pengumuman(),
+            'no' => 1,
+            'title' => 'Siakad Mahasiswa-Pengumuman'
+        );
         $this->load->view('mahasiswa/template/mhs_header', $data);
-        $this->load->view('mahasiswa/template/mhs_sidebar');
+        $this->load->view('mahasiswa/template/mhs_sidebar', $data);
         $this->load->view('mahasiswa/tampil_pengumuman', $data);
         $this->load->view('mahasiswa/template/mhs_footer');
     }
@@ -53,13 +60,17 @@ class MahasiswaController extends CI_Controller
 
     public function tampil()
     {
-        $data['sess'] = $this->session->userdata('isSiswa');
-        $id = $data['sess'][0]['id_nim'];
-        $data['krs'] = $this->M_Mahasiswa->tampilData($id);
-        $data['mahasiswa'] = $this->M_Mahasiswa->id_mahasiswa($id);
-        $data['periode'] = $this->M_Mahasiswa->tampil_periode();
-        $data['periodex'] = $this->M_Mahasiswa->periode();
-        $data['no'] = 1;
+        $data1['sess'] = $this->session->userdata('isSiswa');
+        $id = $data1['sess'][0]['id_nim'];
+        $data = array(
+            'sess' => $this->session->userdata('isSiswa'),
+            'krs' => $this->M_Mahasiswa->tampilData($id),
+            'mahasiswa' => $this->M_Mahasiswa->id_mahasiswa($id),
+            'periode' => $this->M_Mahasiswa->tampil_periode(),
+            'periodex' => $this->M_Mahasiswa->periode(),
+            'no' => 1,
+            'title' => 'Siakad Mahasiswa-KRS'
+        );
 
         $this->load->view('mahasiswa/template/mhs_header', $data);
         $this->load->view('mahasiswa/template/mhs_sidebar', $data);
@@ -74,8 +85,9 @@ class MahasiswaController extends CI_Controller
         $data['sess'] = $this->session->userdata('isSiswa');
         $id = $data['sess'][0]['id_nim'];
         $data1 = array(
-            'title' => 'Tampil KRS',
-            'sess' => $this->session->userdata('isSiswa'), 'krs' => $this->M_Mahasiswa->tampilData2($npmnya, $semesternya),
+            'title' => 'Siakad Mahasiswa-KRS',
+            'sess' => $this->session->userdata('isSiswa'),
+            'krs' => $this->M_Mahasiswa->tampilData2($npmnya, $semesternya),
             'mahasiswa' => $this->M_Mahasiswa->id_mahasiswa($id),
             'periode' => $this->M_Mahasiswa->tampil_periode()
 
@@ -92,28 +104,36 @@ class MahasiswaController extends CI_Controller
     {
         // $npmnya = $this->input->post('npm');
         $semesternya = $this->input->post('smt');
-        $data['sess'] = $this->session->userdata('isSiswa');
-        $id = $data['sess'][0]['id_nim'];
-        $data['mahasiswa'] = $this->M_Mahasiswa->id_mahasiswa($id);
-        $data['matkul'] = $this->M_Mahasiswa->get_matakuliah($semesternya);
-        $data['periode'] = $this->M_Mahasiswa->periode();
-        $data['no'] = 1;
+        $data1['sess'] = $this->session->userdata('isSiswa');
+        $id = $data1['sess'][0]['id_nim'];
+        $data = array(
+            'sess' => $this->session->userdata('isSiswa'),
+            'mahasiswa' => $this->M_Mahasiswa->id_mahasiswa($id),
+            'matkul' => $this->M_Mahasiswa->get_matakuliah($semesternya),
+            'periode' => $this->M_Mahasiswa->periode(),
+            'no' => 1,
+            'title' => 'Siakad Mahasiswa-KRS'
+        );
 
         $this->load->view('mahasiswa/template/mhs_header', $data);
-        $this->load->view('mahasiswa/template/mhs_sidebar');
+        $this->load->view('mahasiswa/template/mhs_sidebar', $data);
         $this->load->view('mahasiswa/tambah_krs', $data);
         $this->load->view('mahasiswa/template/mhs_footer');
     }
 
     public function krs_penawaran()
     {
-        $data['sess'] = $this->session->userdata('isSiswa');
-        $id = $data['sess'][0]['id_nim'];
-        $data['mahasiswa'] = $this->M_Mahasiswa->id_mahasiswa($id);
-        $data['periode'] = $this->M_Mahasiswa->periode();
-        $data['no'] = 1;
+        $data1['sess'] = $this->session->userdata('isSiswa');
+        $id = $data1['sess'][0]['id_nim'];
+        $data = array(
+            'sess' => $this->session->userdata('isSiswa'),
+            'mahasiswa' => $this->M_Mahasiswa->id_mahasiswa($id),
+            'periode' => $this->M_Mahasiswa->periode(),
+            'no' => 1,
+            'title' => 'Siakad Mahasiswa-KRS'
+        );
         $this->load->view('mahasiswa/template/mhs_header', $data);
-        $this->load->view('mahasiswa/template/mhs_sidebar');
+        $this->load->view('mahasiswa/template/mhs_sidebar', $data);
         $this->load->view('mahasiswa/penawaran_krs', $data);
         $this->load->view('mahasiswa/template/mhs_footer');
     }
@@ -139,12 +159,16 @@ class MahasiswaController extends CI_Controller
 
     public function tampil_khs()
     {
-        $data['sess'] = $this->session->userdata('isSiswa');
-        $id = $data['sess'][0]['id_nim'];
-        $data['khs'] = $this->M_Mahasiswa->tampil_khs($id);
-        $data['mahasiswa'] = $this->M_Mahasiswa->id_mahasiswa($id);
-        $data['periode'] = $this->M_Mahasiswa->tampil_periode();
-        $data['no'] = 1;
+        $data1['sess'] = $this->session->userdata('isSiswa');
+        $id = $data1['sess'][0]['id_nim'];
+        $data = array(
+            'sess' => $this->session->userdata('isSiswa'),
+            'khs' => $this->M_Mahasiswa->tampil_khs($id),
+            'mahasiswa' => $this->M_Mahasiswa->id_mahasiswa($id),
+            'periode' => $this->M_Mahasiswa->tampil_periode(),
+            'no' => 1,
+            'title' => 'Siakad Mahasiswa-KHS'
+        );
         $this->load->view('mahasiswa/template/mhs_header', $data);
         $this->load->view('mahasiswa/template/mhs_sidebar', $data);
         $this->load->view('mahasiswa/tampil_khs', $data);
@@ -158,8 +182,9 @@ class MahasiswaController extends CI_Controller
         $data['sess'] = $this->session->userdata('isSiswa');
         $id = $data['sess'][0]['id_nim'];
         $data1 = array(
-            'title' => 'Tampil KHS',
-            'sess' => $this->session->userdata('isSiswa'), 'khs' => $this->M_Mahasiswa->tampil_khs2($npmnya, $semesternya),
+            'title' => 'Siakad Mahasiswa-KHS',
+            'sess' => $this->session->userdata('isSiswa'),
+            'khs' => $this->M_Mahasiswa->tampil_khs2($npmnya, $semesternya),
             'mahasiswa' => $this->M_Mahasiswa->id_mahasiswa($id),
             'periode' => $this->M_Mahasiswa->tampil_periode()
 
@@ -171,22 +196,26 @@ class MahasiswaController extends CI_Controller
         $this->load->view('mahasiswa/template/mhs_footer');
     }
 
-    public function cetak_khs()
-    {
-        $data['sess'] = $this->session->userdata('isSiswa');
-        $id = $data['sess'][0]['id_nim'];
-        $data['khs'] = $this->M_Mahasiswa->tampil_khs($id);
-        $data['siswa'] = $this->M_Mahasiswa->id_mahasiswa($id);
-        $data['no'] = 1;
-        $this->load->view('mahasiswa/cetak_khs', $data);
-    }
+    // public function cetak_khs()
+    // {
+    //     $data['sess'] = $this->session->userdata('isSiswa');
+    //     $id = $data['sess'][0]['id_nim'];
+    //     $data['khs'] = $this->M_Mahasiswa->tampil_khs($id);
+    //     $data['siswa'] = $this->M_Mahasiswa->id_mahasiswa($id);
+    //     $data['no'] = 1;
+    //     $this->load->view('mahasiswa/cetak_khs', $data);
+    // }
 
     ////////// PENGATURAN PAGE //////////
     public function setting_profil()
     {
-        $data['sess'] = $this->session->userdata('isSiswa');
-        $id = $data['sess'][0]['id_nim'];
-        $data['mahasiswa'] = $this->M_Mahasiswa->get_mahasiswa($id);
+        $data1['sess'] = $this->session->userdata('isSiswa');
+        $id = $data1['sess'][0]['id_nim'];
+        $data = array(
+            'sess' =>  $this->session->userdata('isSiswa'),
+            'mahasiswa' => $this->M_Mahasiswa->get_mahasiswa($id),
+            'title' => 'Siakad Mahasiswa-Profil'
+        );
 
         $this->load->view('mahasiswa/template/mhs_header', $data);
         $this->load->view('mahasiswa/template/mhs_sidebar', $data);
